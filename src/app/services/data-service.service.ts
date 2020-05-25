@@ -14,7 +14,9 @@ export class DataServiceService {
 
   constructor(private http: HttpClient) {
     const now = new Date();
-    this.globalDataURL = `${ this.globalDataURL }${ ( now.getMonth() + 1 < 10 ) ? '0' + ( now.getMonth() + 1 ) : ( now.getMonth() + 1 ) }-${ ( now.getDay() < 10 ) ? '0' + now.getDay() : now.getDay() }-${ now.getFullYear() }.csv`;
+    now.setDate(now.getDate() - 1);
+    console.log(now.getDate());
+    this.globalDataURL = `${ this.globalDataURL }${ ( now.getMonth() + 1 < 10 ) ? '0' + ( now.getMonth() + 1 ) : ( now.getMonth() + 1 ) }-${ ( now.getDate() < 10 ) ? '0' + now.getDate() : now.getDate() }-${ now.getFullYear() }.csv`;
   }
 
   getDateWiseData() {
