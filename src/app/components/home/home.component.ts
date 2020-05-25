@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
     }
   };
 
+  loading = true;
   datatable = [];
 
   constructor(private dataService: DataServiceService) { }
@@ -66,21 +67,24 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataService.getGlobalData()
-      .subscribe({
-        next: (result) => {
-          console.log(result);
-          this.globalData = result;
-          result.forEach(country => {
-            if (!Number.isNaN(country.confirmed)) {
-              this.totalActive += country.active;
-              this.totalConfirmed += country.confirmed;
-              this.totalDeaths += country.deaths;
-              this.totalRecovered += country.active;
-            }
-          });
-          this.initChart('confirmed');
-        }
-      });
+      .subscribe(
+        {
+          next: (result) => {
+            this.globalData = result;
+            result.forEach(country => {
+              if (!Number.isNaN(country.confirmed)) {
+                this.totalActive += country.active;
+                this.totalConfirmed += country.confirmed;
+                this.totalDeaths += country.deaths;
+                this.totalRecovered += country.active;
+              }
+            });
+            this.initChart('confirmed');
+          },
+          complete: () => {
+            this.loading = false;
+          }
+        });
   }
 
   updateChart(input: string) {

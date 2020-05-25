@@ -1,3 +1,7 @@
+<div class="ui inverted dimmer" [class.active]="loading">
+  <div class="ui text loader">Loading</div>
+</div>
+
 <div class="jumbotron bg-white text-center">
   <h1 class="display-4">Corona Covid-19 Tracker</h1>
   <hr>
@@ -11,7 +15,7 @@
 <hr/>
 <div class="ui form">
   <div class="inline fields">
-    <label for="fruit">Select Case Type:</label>
+    <label for="caseType">Select Case Type:</label>
     <div class="field">
       <div class="ui radio checkbox">
         <input type="radio" id='confirmed' value='confirmed' #c name="caseType" (click)="updateChart(c.value)" checked="" tabindex="0" class="hidden">
