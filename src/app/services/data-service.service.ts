@@ -8,10 +8,14 @@ import { GlobalDataSummary } from '../models/global-data';
   providedIn: 'root'
 })
 export class DataServiceService {
-  private globalDataURL = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/05-23-2020.csv';
+  // tslint:disable-next-line:max-line-length
+  private globalDataURL = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/';
   private dateWiseDataURL = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    const now = new Date();
+    this.globalDataURL = `${ this.globalDataURL }${ ( now.getMonth() + 1 < 10 ) ? '0' + ( now.getMonth() + 1 ) : ( now.getMonth() + 1 ) }-${ ( now.getDay() < 10 ) ? '0' + now.getDay() : now.getDay() }-${ now.getFullYear() }.csv`;
+  }
 
   getDateWiseData() {
     return this.http.get(this.dateWiseDataURL, { responseType: 'text' })
