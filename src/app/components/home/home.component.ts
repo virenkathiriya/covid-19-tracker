@@ -15,7 +15,54 @@ export class HomeComponent implements OnInit {
   totalRecovered = 0;
   globalData: GlobalDataSummary[];
 
+  chart = {
+    PieChart: 'PieChart',
+    ColumnChart: 'ColumnChart',
+    LineChart: 'LineChart',
+    height: 500,
+    options: {
+      animation: {
+        duration: 100,
+        easing: 'out',
+      },
+      is3D: true
+    }
+  };
+
+  datatable = [];
+
   constructor(private dataService: DataServiceService) { }
+
+  initChart(caseType: string) {
+    this.datatable = [];
+    this.globalData.forEach(cs => {
+      let value: number;
+
+      if (caseType === 'confirmed') {
+        if (cs.confirmed > 2000) {
+          value = cs.confirmed;
+        }
+      }
+      if (caseType === 'active') {
+        if (cs.active > 2000) {
+          value = cs.active;
+        }
+      }
+      if (caseType === 'deaths') {
+        if (cs.deaths > 1000) {
+          value = cs.deaths;
+        }
+      }
+      if (caseType === 'recovered') {
+        if (cs.recovered > 2000) {
+          value = cs.recovered;
+        }
+      }
+
+      this.datatable.push([cs.country, value]);
+    });
+    console.log(this.datatable);
+  }
 
   ngOnInit(): void {
     this.dataService.getGlobalData()
@@ -31,8 +78,13 @@ export class HomeComponent implements OnInit {
               this.totalRecovered += country.active;
             }
           });
+          this.initChart('confirmed');
         }
       });
   }
 
+  updateChart(input: string) {
+    console.log(input);
+    this.initChart(input);
+  }
 }
