@@ -5,6 +5,10 @@ import { AuthGuard } from './components/auth/auth.guard';
 import { HelpLineComponent } from './components/helpline/helpline.component';
 import { HomeComponent } from './components/home/home.component';
 import { CountriesComponent } from './components/countries/countries.component';
+import { ReportDetailComponent } from './components/report/report-detail/report-detail.component';
+import { ReportNewComponent } from './components/report/report-new/report-new.component';
+import { ReportResolverService } from './components/report/report-resolver.service';
+import { ReportComponent } from './components/report/report.component';
 
 
 const routes: Routes = [
@@ -12,6 +16,12 @@ const routes: Routes = [
   { path: 'countries', component: CountriesComponent, canActivate: [AuthGuard] },
   { path: 'auth', component: AuthComponent },
   { path: 'helpdesk', component: HelpLineComponent},
+  {
+    path: 'reports', component: ReportComponent, canActivate: [AuthGuard], children: [
+      { path: 'new', component: ReportNewComponent },
+      { path: ':id', component: ReportDetailComponent, resolve: [ReportResolverService] },
+    ]
+  }
 ];
 
 @NgModule({

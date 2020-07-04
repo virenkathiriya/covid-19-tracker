@@ -1,0 +1,19 @@
+<a
+  style="cursor: pointer; color: black"
+  class="list-group-item clearfix"
+  routerLinkActive="active"
+  [routerLink]="[index]">
+  <div class="row">
+    <div class="col">
+      <h4 class="list-group-item-heading">{{ report.author }}</h4>
+      <p class="list-group-item-text">{{ report.createdAt }}</p>
+    </div>
+    <div class="col">
+      <img
+        [src]="report.imagePath"
+        alt="{{ report.summary }}"
+        class="img-responsive"
+        style="max-height: 50px;">
+    </div>
+  </div>
+</a>
