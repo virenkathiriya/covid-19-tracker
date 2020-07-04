@@ -43,7 +43,6 @@ export class DataServiceService {
             mainData[country].push(dateWise);
           });
         });
-
         return mainData;
       }));
   }

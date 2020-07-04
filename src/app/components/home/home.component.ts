@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit {
 
       this.datatable.push([cs.country, value]);
     });
-    console.log(this.datatable);
+    // console.log(this.datatable);
   }
 
   ngOnInit(): void {
