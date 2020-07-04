@@ -1,6 +1,15 @@
 @import "../../../../node_modules/ag-grid-community/src/styles/ag-grid.scss";
-@import "../../../../node_modules/ag-grid-community/src/styles/ag-theme-blue/sass/ag-theme-blue.scss";
+@import "../../../../node_modules/ag-grid-community/src/styles/ag-theme-base/sass/ag-theme-base.scss";
 
 // .ag-theme-blue {
 //     @include ag-theme-blue();
 // }
+
+.ag-theme-base {//should have specific name, since sizes doesn't work with custom name
+  @include ag-theme-base(
+    (
+      foreground-color: black,
+      background-color: yellow,
+    )// this is parameters set object where you can ovveride ag-grid properties 
+  );
+}
