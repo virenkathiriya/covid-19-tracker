@@ -19,6 +19,8 @@
     "@angular/platform-browser": "~9.1.9",
     "@angular/platform-browser-dynamic": "~9.1.9",
     "@angular/router": "~9.1.9",
+    "ag-grid-angular": "^23.2.1",
+    "ag-grid-community": "^23.2.1",
     "angular-google-charts": "^1.1.4",
     "ngx-bootstrap": "^5.6.1",
     "rxjs": "~6.5.4",
