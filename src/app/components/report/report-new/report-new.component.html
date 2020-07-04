@@ -1,0 +1,83 @@
+<div class="row">
+  <div class="col-md-12 p-5">
+    <form [formGroup]="reportForm" (ngSubmit)="onSubmit()" *ngIf="reportForm">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="author">Author</label>
+            <input
+              type="text"
+              id="author"
+              formControlName="author"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="createdAt">CreatedAt</label>
+            <input
+              type="datetime-local"
+              id="createdAt"
+              formControlName="createdAt"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="imagePath">Image URL</label>
+            <input
+              type="text"
+              id="imagePath"
+              formControlName="imagePath"
+              class="form-control"
+              #imagePath>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12" style="width: 100%">
+          <img [src]="imagePath.value" style="width: 100%">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea
+              type="text"
+              id="description"
+              class="form-control"
+              formControlName="description"
+              rows="15"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="summary">summary</label>
+            <input
+              type="text"
+              id="summary"
+              formControlName="summary"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="!reportForm.valid">Save
+          </button>&nbsp;&nbsp;
+          <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

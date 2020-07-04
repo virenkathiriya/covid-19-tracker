@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-success" (click)="onNewReport()">New Report</button>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-12">
+    <app-report-item
+      *ngFor="let reportEl of reports; let i = index"
+      [report]="reportEl"
+      [index]="i"></app-report-item>
+  </div>
+</div>

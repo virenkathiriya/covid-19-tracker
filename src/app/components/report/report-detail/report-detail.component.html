@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-md-12 text-center" style="font-size: 30px">
+    <p>{{ report.summary }}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12" style="width: 100%">
+    <img [src]="report.imagePath" [alt]="report.summary" style="width: 100%">
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 alert jasmine-alert">
+    <h5>Report By: {{ report.author }}</h5>
+    <h5>Uploded At: {{ report.createdAt }}</h5>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <p style="font-size: 20px">{{ report.description }}</p>
+  </div>
+</div>
